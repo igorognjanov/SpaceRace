@@ -9,13 +9,13 @@ namespace SpaceRace
 {
     abstract public class Player
     {
-        public int MoveIndex = 10;
-        public Rectangle Rectangle { get; set; }
+        public int MoveIndex = 15;
+        public Ball Ball { get; set; }
         public Point Center { set; get; }
+        public int Points { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
-        public int RectangleWidth = 20;
-        public int RectangleHeight = 40;
+        public int Radius = 16;
         public Player(int Width, int Height)
         {
             this.Width = Width;
@@ -24,27 +24,31 @@ namespace SpaceRace
         public void Draw(Graphics g)
         {
             Pen Pen = new Pen(Color.White, 3);
-            g.DrawRectangle(Pen, Rectangle);
+            g.DrawEllipse(Pen, Center.X - Radius, Center.Y - Radius, Radius * 2, Radius * 2);
             Pen.Dispose();
         }
         abstract public bool MoveLeft();
         abstract public bool MoveRight();
         abstract public bool MoveUp();
+        abstract public void InitCenter();
         public bool MoveDown()
         {
-            if (Center.Y + 80 >= Height)
+            if (Center.Y + 80 + MoveIndex >= Height)
             {
                 return false;
             }
             Center = new Point(Center.X, Center.Y + MoveIndex);
-            UpdateRectangle();
+            UpdateBall();
             return true;
         }
-        public void UpdateRectangle()
+        public void UpdateBall()
         {
-            Rectangle = new Rectangle(Center.X, Center.Y, RectangleWidth, RectangleHeight);
+            Ball = new Ball(Center.X, Center.Y, Radius);
         }
 
-
+        public bool IsTouching(Ball Ball)
+        {
+            return this.Ball.IsTouching(Ball);
+        }
     }
 }

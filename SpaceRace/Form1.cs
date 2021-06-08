@@ -19,6 +19,8 @@ namespace SpaceRace
             Scene = new Scene(Width, Height);
             Invalidate();
             DoubleBuffered = true;
+            timerGeneratingBalls.Start();
+            timerMovingBalls.Start();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -47,9 +49,21 @@ namespace SpaceRace
             Invalidate();
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void timerMovingBalls_Tick(object sender, EventArgs e)
         {
+            Scene.MoveBalls();
+            if (Scene.CheckLeftIfTouching())
+                Scene.PlayerLeft.InitCenter();
+            if (Scene.CheckRightIfTouching())
+                Scene.PlayerRight.InitCenter();
+            Invalidate();
+        }
 
+        private void timerGeneratingBalls_Tick(object sender, EventArgs e)
+        {
+            timerGeneratingBalls.Interval = new Random().Next(120, 300);
+            Scene.GenerateBall();
+            Invalidate();
         }
     }
 }

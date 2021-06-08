@@ -30,12 +30,19 @@ namespace SpaceRace
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.timerMovingBalls = new System.Windows.Forms.Timer(this.components);
+            this.timerGeneratingBalls = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // timer
+            // timerMovingBalls
             // 
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            this.timerMovingBalls.Interval = 1;
+            this.timerMovingBalls.Tick += new System.EventHandler(this.timerMovingBalls_Tick);
+            // 
+            // timerGeneratingBalls
+            // 
+            this.timerGeneratingBalls.Interval = 1000;
+            this.timerGeneratingBalls.Tick += new System.EventHandler(this.timerGeneratingBalls_Tick);
             // 
             // Form1
             // 
@@ -53,7 +60,8 @@ namespace SpaceRace
 
         #endregion
 
-        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Timer timerMovingBalls;
+        private System.Windows.Forms.Timer timerGeneratingBalls;
     }
 }
 

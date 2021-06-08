@@ -11,35 +11,37 @@ namespace SpaceRace
     {
         public PlayerRight(int Width, int Height) : base(Width, Height)
         {
-
-            Center = new Point((int)(Width * 0.75) - RectangleWidth / 2, Height - 100);
-            UpdateRectangle();
+            InitCenter();
+            UpdateBall();
         }
-
+        public override void InitCenter()
+        {
+            Center = new Point((int)(Width * 0.75), Height - 100);
+        }
         public override bool MoveLeft()
         {
-            if (Center.X - MoveIndex <= Width / 2)
+            if (Center.X - Radius - MoveIndex <= Width / 2)
                 return false;
             Center = new Point(Center.X - MoveIndex, Center.Y);
-            UpdateRectangle();
+            UpdateBall();
             return true;
         }
 
         public override bool MoveRight()
         {
-            if (Center.X  + RectangleWidth * 2 >= Width)
+            if (Center.X  + Radius + MoveIndex >= Width)
                 return false;
             Center = new Point(Center.X + MoveIndex, Center.Y);
-            UpdateRectangle();
+            UpdateBall();
             return true;
         }
 
         public override bool MoveUp()
         {
-            if (Center.Y <= 0)
+            if (Center.Y - Radius - MoveIndex <= 0)
                 return false;
             Center = new Point(Center.X, Center.Y - MoveIndex);
-            UpdateRectangle();
+            UpdateBall();
             return true;
         }
     }
