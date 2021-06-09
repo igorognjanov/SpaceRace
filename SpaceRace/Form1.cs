@@ -13,6 +13,8 @@ namespace SpaceRace
     public partial class Form1 : Form
     {
         public Scene Scene { get; set; }
+
+        int timeLeft;
         public Form1()
         {
             InitializeComponent();
@@ -21,6 +23,8 @@ namespace SpaceRace
             DoubleBuffered = true;
             timerGeneratingBalls.Start();
             timerMovingBalls.Start();
+            timeLeft = 120;
+            ProgressBarTimer.Start();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -64,6 +68,18 @@ namespace SpaceRace
             timerGeneratingBalls.Interval = new Random().Next(120, 300);
             Scene.GenerateBall();
             Invalidate();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.progressBar1.Increment(1);
+            String temp;
+            if (timeLeft % 60 == 0)
+                temp = "00";
+            else
+                temp = (timeLeft % 60).ToString();
+            tbTimer.Text = String.Format("{0}:{1}", timeLeft / 60, temp);
+            timeLeft -= 1;
         }
     }
 }
