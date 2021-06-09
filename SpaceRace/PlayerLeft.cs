@@ -19,22 +19,21 @@ namespace SpaceRace
             this.Center = new Point(Width / 4, Height - 100);
         }
 
-        public override bool MoveLeft()
+        public override void MoveLeft()
         {
-            if (Center.X - MoveIndex - Radius <= 0)
-                return false;
-            Center = new Point(Center.X - MoveIndex, Center.Y);
-            UpdateBall();
-            return true;
+            if (Center.X - MoveIndex - Radius >= 0)
+            {
+                Center = new Point(Center.X - MoveIndex, Center.Y);
+                UpdateBall();
+            }
         }
-
-        public override bool MoveRight()
+        public override void MoveRight()
         {
-            if (Center.X + Radius + MoveIndex >= Width / 2)
-                return false;
-            Center = new Point(Center.X + MoveIndex, Center.Y);
-            UpdateBall();
-            return true;
+            if (Center.X + Radius + MoveIndex <= Width / 2)
+            {
+                Center = new Point(Center.X + MoveIndex, Center.Y);
+                UpdateBall();
+            }
         }
 
         public override bool MoveUp()

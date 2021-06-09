@@ -13,7 +13,7 @@ namespace SpaceRace
         public Point EndPoint { get; set; }
         public Line(int Width, int Height)
         {
-            StartPoint = new Point(Width / 2, 0);
+            StartPoint = new Point(Width / 2, 65);
             EndPoint = new Point(Width / 2, Height);
         }
         public void Draw(Graphics g)

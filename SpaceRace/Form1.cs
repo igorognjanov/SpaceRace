@@ -23,8 +23,10 @@ namespace SpaceRace
             DoubleBuffered = true;
             timerGeneratingBalls.Start();
             timerMovingBalls.Start();
-            timeLeft = 120;
+            timeLeft = 12;
             ProgressBarTimer.Start();
+            lblTime.BackColor = Color.Transparent;
+            progressBar.Value = 120;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -41,7 +43,13 @@ namespace SpaceRace
             else if (e.KeyCode == Keys.D)
                 Scene.MoveLRight();
             else if (e.KeyCode == Keys.W)
-                Scene.MoveLUp();
+            {
+                if (!Scene.MoveLUp())
+                {
+                    Scene.PlayerLeft.AddPoint();
+                    Scene.PlayerLeft.InitCenter();
+                }
+            }
             else if (e.KeyCode == Keys.Down)
                 Scene.MoveRDown();
             else if (e.KeyCode == Keys.Left)
@@ -49,8 +57,21 @@ namespace SpaceRace
             else if (e.KeyCode == Keys.Right)
                 Scene.MoveRRight();
             else if (e.KeyCode == Keys.Up)
-                Scene.MoveRUp();
+            {
+                if (!Scene.MoveRUp())
+                {
+                    Scene.PlayerRight.AddPoint();
+                    Scene.PlayerRight.InitCenter();
+                }
+            }
+            UpdatePoints();
             Invalidate();
+        }
+
+        public void UpdatePoints()
+        {
+            lblPointsLeft.Text = Scene.PlayerLeft.Points.ToString();
+            lblPointsRight.Text = Scene.PlayerRight.Points.ToString();
         }
 
         private void timerMovingBalls_Tick(object sender, EventArgs e)
@@ -70,16 +91,23 @@ namespace SpaceRace
             Invalidate();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timerProgressBar_Tick(object sender, EventArgs e)
         {
-            this.progressBar1.Increment(1);
-            String temp;
-            if (timeLeft % 60 == 0)
-                temp = "00";
+            if (timeLeft >= 0)
+            {
+                this.progressBar.Increment(-1);
+                lblTime.Text = String.Format("{0}:{1:00}", timeLeft / 60, timeLeft % 60);
+                timeLeft -= 1;
+            }
             else
-                temp = (timeLeft % 60).ToString();
-            tbTimer.Text = String.Format("{0}:{1}", timeLeft / 60, temp);
-            timeLeft -= 1;
+            {
+                timerMovingBalls.Stop();
+                ProgressBarTimer.Stop();
+
+                DialogResult dr = MessageBox.Show(Scene.GetWinner() + " Дали сакате нова игра?", "GAME OVER", MessageBoxButtons.YesNo);
+
+
+            }
         }
     }
 }

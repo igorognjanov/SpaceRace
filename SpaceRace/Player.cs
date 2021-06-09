@@ -20,6 +20,7 @@ namespace SpaceRace
         {
             this.Width = Width;
             this.Height = Height;
+            Points = 0;
         }
         public void Draw(Graphics g)
         {
@@ -27,19 +28,17 @@ namespace SpaceRace
             g.DrawEllipse(Pen, Center.X - Radius, Center.Y - Radius, Radius * 2, Radius * 2);
             Pen.Dispose();
         }
-        abstract public bool MoveLeft();
-        abstract public bool MoveRight();
+        abstract public void MoveLeft();
+        abstract public void MoveRight();
         abstract public bool MoveUp();
         abstract public void InitCenter();
-        public bool MoveDown()
+        public void MoveDown()
         {
-            if (Center.Y + 80 + MoveIndex >= Height)
+            if (Center.Y + 80 + MoveIndex <= Height)
             {
-                return false;
+                Center = new Point(Center.X, Center.Y + MoveIndex);
+                UpdateBall();
             }
-            Center = new Point(Center.X, Center.Y + MoveIndex);
-            UpdateBall();
-            return true;
         }
         public void UpdateBall()
         {
@@ -49,6 +48,10 @@ namespace SpaceRace
         public bool IsTouching(Ball Ball)
         {
             return this.Ball.IsTouching(Ball);
+        }
+        public void AddPoint()
+        {
+            Points++;
         }
     }
 }

@@ -97,6 +97,17 @@ namespace SpaceRace
                 ball.MoveLeft();
             }
         }
+        public string GetWinner()
+        {
+            string ret = "";
+            if (PlayerRight.Points == PlayerLeft.Points)
+                ret = "Нема победник, и двајцата играчи имаат ист број на поени.";
+            else if (PlayerRight.Points < PlayerLeft.Points)
+                ret = "Победник е играчот од левата страна!";
+            else if (PlayerRight.Points > PlayerLeft.Points)
+                ret = "Победник е играчот од десната страна!";
+            return ret;
+        }
         public void MoveLDown()
         {
             PlayerLeft.MoveDown();
@@ -108,9 +119,9 @@ namespace SpaceRace
         public void MoveLRight() {
             PlayerLeft.MoveRight();
         }
-        public void MoveLUp()
+        public bool MoveLUp()
         {
-            PlayerLeft.MoveUp();
+            return PlayerLeft.MoveUp();
         }
         public void MoveRDown()
         {
@@ -124,9 +135,9 @@ namespace SpaceRace
         {
             PlayerRight.MoveRight();
         }
-        public void MoveRUp()
+        public bool MoveRUp()
         {
-            PlayerRight.MoveUp();
+            return PlayerRight.MoveUp();
         }
 
     }

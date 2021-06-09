@@ -32,9 +32,11 @@ namespace SpaceRace
             this.components = new System.ComponentModel.Container();
             this.timerMovingBalls = new System.Windows.Forms.Timer(this.components);
             this.timerGeneratingBalls = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.ProgressBarTimer = new System.Windows.Forms.Timer(this.components);
-            this.tbTimer = new System.Windows.Forms.TextBox();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lblPointsLeft = new System.Windows.Forms.Label();
+            this.lblPointsRight = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timerMovingBalls
@@ -47,47 +49,67 @@ namespace SpaceRace
             this.timerGeneratingBalls.Interval = 1000;
             this.timerGeneratingBalls.Tick += new System.EventHandler(this.timerGeneratingBalls_Tick);
             // 
-            // progressBar1
+            // progressBar
             // 
-            this.progressBar1.BackColor = System.Drawing.Color.Black;
-            this.progressBar1.Enabled = false;
-            this.progressBar1.Location = new System.Drawing.Point(-1, 507);
-            this.progressBar1.Maximum = 120;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(767, 23);
-            this.progressBar1.TabIndex = 0;
+            this.progressBar.BackColor = System.Drawing.Color.Black;
+            this.progressBar.Enabled = false;
+            this.progressBar.Location = new System.Drawing.Point(-1, 624);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar.Maximum = 120;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(1023, 28);
+            this.progressBar.TabIndex = 0;
             // 
             // ProgressBarTimer
             // 
             this.ProgressBarTimer.Interval = 1000;
-            this.ProgressBarTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            this.ProgressBarTimer.Tick += new System.EventHandler(this.timerProgressBar_Tick);
             // 
-            // tbTimer
+            // lblTime
             // 
-            this.tbTimer.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.tbTimer.BackColor = System.Drawing.Color.Black;
-            this.tbTimer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbTimer.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbTimer.Enabled = false;
-            this.tbTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimer.ForeColor = System.Drawing.Color.White;
-            this.tbTimer.Location = new System.Drawing.Point(331, 0);
-            this.tbTimer.Margin = new System.Windows.Forms.Padding(0);
-            this.tbTimer.Name = "tbTimer";
-            this.tbTimer.Size = new System.Drawing.Size(100, 54);
-            this.tbTimer.TabIndex = 1;
-            this.tbTimer.Text = "2:00";
-            this.tbTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.White;
+            this.lblTime.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.lblTime.Location = new System.Drawing.Point(455, 9);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(118, 55);
+            this.lblTime.TabIndex = 1;
+            this.lblTime.Text = "2:00";
+            // 
+            // lblPointsLeft
+            // 
+            this.lblPointsLeft.AutoSize = true;
+            this.lblPointsLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPointsLeft.ForeColor = System.Drawing.Color.White;
+            this.lblPointsLeft.Location = new System.Drawing.Point(12, 558);
+            this.lblPointsLeft.Name = "lblPointsLeft";
+            this.lblPointsLeft.Size = new System.Drawing.Size(47, 52);
+            this.lblPointsLeft.TabIndex = 2;
+            this.lblPointsLeft.Text = "0";
+            // 
+            // lblPointsRight
+            // 
+            this.lblPointsRight.AutoSize = true;
+            this.lblPointsRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPointsRight.ForeColor = System.Drawing.Color.White;
+            this.lblPointsRight.Location = new System.Drawing.Point(957, 558);
+            this.lblPointsRight.Name = "lblPointsRight";
+            this.lblPointsRight.Size = new System.Drawing.Size(47, 52);
+            this.lblPointsRight.TabIndex = 3;
+            this.lblPointsRight.Text = "0";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(762, 530);
-            this.Controls.Add(this.tbTimer);
-            this.Controls.Add(this.progressBar1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.ClientSize = new System.Drawing.Size(1016, 652);
+            this.Controls.Add(this.lblPointsRight);
+            this.Controls.Add(this.lblPointsLeft);
+            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.progressBar);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
@@ -101,9 +123,11 @@ namespace SpaceRace
 
         private System.Windows.Forms.Timer timerMovingBalls;
         private System.Windows.Forms.Timer timerGeneratingBalls;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Timer ProgressBarTimer;
-        private System.Windows.Forms.TextBox tbTimer;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblPointsLeft;
+        private System.Windows.Forms.Label lblPointsRight;
     }
 }
 
