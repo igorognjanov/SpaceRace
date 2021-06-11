@@ -23,7 +23,7 @@ namespace SpaceRace
             DoubleBuffered = true;
             timerGeneratingBalls.Start();
             timerMovingBalls.Start();
-            timeLeft = 120;
+            timeLeft = 4;
             ProgressBarTimer.Start();
             lblTime.BackColor = Color.Transparent;
             progressBar.Value = 120;
@@ -104,7 +104,18 @@ namespace SpaceRace
                 timerMovingBalls.Stop();
                 ProgressBarTimer.Stop();
 
-                DialogResult dr = MessageBox.Show(Scene.GetWinner() + " Дали сакате нова игра?", "GAME OVER", MessageBoxButtons.YesNo);
+                //DialogResult dr = MessageBox.Show(Scene.GetWinner() + " Дали сакате нова игра?", "GAME OVER", MessageBoxButtons.YesNo);
+                if (MessageBox.Show(Scene.GetWinner() + " Дали сакате нова игра?", "GAME OVER", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    DialogResult = System.Windows.Forms.DialogResult.Yes;
+                    this.Dispose();
+                    Close();
+                }
+                else
+                {
+                    DialogResult = System.Windows.Forms.DialogResult.No;
+                    Close();
+                }
 
 
             }
