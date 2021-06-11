@@ -23,7 +23,7 @@ namespace SpaceRace
             DoubleBuffered = true;
             timerGeneratingBalls.Start();
             timerMovingBalls.Start();
-            timeLeft = 12;
+            timeLeft = 120;
             ProgressBarTimer.Start();
             lblTime.BackColor = Color.Transparent;
             progressBar.Value = 120;
