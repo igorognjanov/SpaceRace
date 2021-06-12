@@ -18,15 +18,22 @@ namespace SpaceRace
         public Form1()
         {
             InitializeComponent();
+            DoubleBuffered = true;
+            lblOpenGame.BackColor = lblSaveGame.BackColor = Color.Transparent;
+            lblTime.BackColor = Color.Transparent;
+            Init();
+        }
+        public void Init()
+        {
             Scene = new Scene(Width, Height);
             Invalidate();
-            DoubleBuffered = true;
             timerGeneratingBalls.Start();
             timerMovingBalls.Start();
-            timeLeft = 4;
+            timeLeft = 119;
             ProgressBarTimer.Start();
-            lblTime.BackColor = Color.Transparent;
             progressBar.Value = 120;
+            lblPointsLeft.Text = lblPointsRight.Text = "0";
+            lblTime.Text = "2:00";
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -106,19 +113,11 @@ namespace SpaceRace
 
                 //DialogResult dr = MessageBox.Show(Scene.GetWinner() + " Дали сакате нова игра?", "GAME OVER", MessageBoxButtons.YesNo);
                 if (MessageBox.Show(Scene.GetWinner() + " Дали сакате нова игра?", "GAME OVER", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    DialogResult = System.Windows.Forms.DialogResult.Yes;
-                    this.Dispose();
-                    Close();
-                }
+                    Init();
                 else
-                {
-                    DialogResult = System.Windows.Forms.DialogResult.No;
-                    Close();
-                }
-
-
+                    this.Close();
             }
         }
+
     }
 }

@@ -22,17 +22,7 @@ namespace SpaceRace
         {
             Form1 form = new Form1();
             this.Visible = false;
-
-            if (form.ShowDialog() == System.Windows.Forms.DialogResult.No)
-            {
-                form.Visible = false;
-                this.Visible = true;
-            }
-            else
-            {
-                newGame();
-            }
-
+            form.Show();
 
         }
 

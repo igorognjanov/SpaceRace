@@ -37,6 +37,8 @@ namespace SpaceRace
             this.lblTime = new System.Windows.Forms.Label();
             this.lblPointsLeft = new System.Windows.Forms.Label();
             this.lblPointsRight = new System.Windows.Forms.Label();
+            this.lblSaveGame = new System.Windows.Forms.Label();
+            this.lblOpenGame = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timerMovingBalls
@@ -54,7 +56,7 @@ namespace SpaceRace
             this.progressBar.BackColor = System.Drawing.Color.Black;
             this.progressBar.Enabled = false;
             this.progressBar.Location = new System.Drawing.Point(-1, 624);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar.Maximum = 120;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(1023, 28);
@@ -84,7 +86,7 @@ namespace SpaceRace
             this.lblPointsLeft.ForeColor = System.Drawing.Color.White;
             this.lblPointsLeft.Location = new System.Drawing.Point(12, 558);
             this.lblPointsLeft.Name = "lblPointsLeft";
-            this.lblPointsLeft.Size = new System.Drawing.Size(47, 52);
+            this.lblPointsLeft.Size = new System.Drawing.Size(46, 51);
             this.lblPointsLeft.TabIndex = 2;
             this.lblPointsLeft.Text = "0";
             // 
@@ -95,9 +97,31 @@ namespace SpaceRace
             this.lblPointsRight.ForeColor = System.Drawing.Color.White;
             this.lblPointsRight.Location = new System.Drawing.Point(957, 558);
             this.lblPointsRight.Name = "lblPointsRight";
-            this.lblPointsRight.Size = new System.Drawing.Size(47, 52);
+            this.lblPointsRight.Size = new System.Drawing.Size(46, 51);
             this.lblPointsRight.TabIndex = 3;
             this.lblPointsRight.Text = "0";
+            // 
+            // lblSaveGame
+            // 
+            this.lblSaveGame.AutoSize = true;
+            this.lblSaveGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaveGame.ForeColor = System.Drawing.Color.White;
+            this.lblSaveGame.Location = new System.Drawing.Point(429, 576);
+            this.lblSaveGame.Name = "lblSaveGame";
+            this.lblSaveGame.Size = new System.Drawing.Size(67, 29);
+            this.lblSaveGame.TabIndex = 4;
+            this.lblSaveGame.Text = "Save";
+            // 
+            // lblOpenGame
+            // 
+            this.lblOpenGame.AutoSize = true;
+            this.lblOpenGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpenGame.ForeColor = System.Drawing.Color.White;
+            this.lblOpenGame.Location = new System.Drawing.Point(536, 576);
+            this.lblOpenGame.Name = "lblOpenGame";
+            this.lblOpenGame.Size = new System.Drawing.Size(73, 29);
+            this.lblOpenGame.TabIndex = 5;
+            this.lblOpenGame.Text = "Open";
             // 
             // Form1
             // 
@@ -105,6 +129,8 @@ namespace SpaceRace
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1016, 652);
+            this.Controls.Add(this.lblOpenGame);
+            this.Controls.Add(this.lblSaveGame);
             this.Controls.Add(this.lblPointsRight);
             this.Controls.Add(this.lblPointsLeft);
             this.Controls.Add(this.lblTime);
@@ -128,6 +154,8 @@ namespace SpaceRace
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblPointsLeft;
         private System.Windows.Forms.Label lblPointsRight;
+        private System.Windows.Forms.Label lblSaveGame;
+        private System.Windows.Forms.Label lblOpenGame;
     }
 }
 
