@@ -111,6 +111,7 @@ namespace SpaceRace
             this.lblSaveGame.Size = new System.Drawing.Size(67, 29);
             this.lblSaveGame.TabIndex = 4;
             this.lblSaveGame.Text = "Save";
+            this.lblSaveGame.Click += new System.EventHandler(this.lblSaveGame_Click);
             // 
             // lblOpenGame
             // 
@@ -122,6 +123,7 @@ namespace SpaceRace
             this.lblOpenGame.Size = new System.Drawing.Size(73, 29);
             this.lblOpenGame.TabIndex = 5;
             this.lblOpenGame.Text = "Open";
+            this.lblOpenGame.Click += new System.EventHandler(this.lblOpenGame_Click);
             // 
             // Form1
             // 

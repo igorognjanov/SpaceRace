@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -119,5 +122,30 @@ namespace SpaceRace
             }
         }
 
+        private void lblSaveGame_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(sfd.FileName, FileMode.OpenOrCreate))
+                {
+                    IFormatter Formatter = new BinaryFormatter();
+                    Formatter.Serialize(fs, Scene);
+                }
+            }
+        }
+
+        private void lblOpenGame_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog sfd = new OpenFileDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(sfd.FileName, FileMode.Open))
+                {
+                    IFormatter Formatter = new BinaryFormatter();
+                    Scene = (Scene)Formatter.Deserialize(fs);
+                }
+            }
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpaceRace
 {
+    [Serializable]
     public class Scene
     {
         public Player PlayerLeft { get; set; }

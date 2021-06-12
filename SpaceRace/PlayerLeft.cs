@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpaceRace
 {
+    [Serializable]
     public class PlayerLeft : Player
     {
         public PlayerLeft(int Width, int Height) : base(Width, Height)

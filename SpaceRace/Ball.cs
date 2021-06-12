@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpaceRace
 {
+    [Serializable]
     public class Ball
     {
         public Point Center { get; set; }

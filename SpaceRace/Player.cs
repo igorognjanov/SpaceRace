@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpaceRace
 {
+    [Serializable]
     abstract public class Player
     {
         public int MoveIndex = 15;
