@@ -1,7 +1,7 @@
 ﻿
 namespace SpaceRace
 {
-    partial class Form1
+    partial class SpaceRace
     {
         /// <summary>
         /// Required designer variable.
@@ -125,7 +125,7 @@ namespace SpaceRace
             this.lblOpenGame.Text = "Open";
             this.lblOpenGame.Click += new System.EventHandler(this.lblOpenGame_Click);
             // 
-            // Form1
+            // SpaceRace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,8 +138,8 @@ namespace SpaceRace
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.progressBar);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "SpaceRace";
+            this.Text = "SpaceRace";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);

@@ -18,17 +18,9 @@ namespace SpaceRace
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form1 form = new Form1();
-            this.Visible = false;
-            form.Show();
-
-        }
-
         private void newGame()
         {
-            Form1 form = new Form1();
+            SpaceRace form = new SpaceRace();
             this.Visible = false;
 
             if (form.ShowDialog() == System.Windows.Forms.DialogResult.No)
@@ -40,6 +32,19 @@ namespace SpaceRace
             {
                 newGame();
             }
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            SpaceRace form = new SpaceRace();
+            this.Visible = false;
+            form.Show();
+
         }
     }
 }

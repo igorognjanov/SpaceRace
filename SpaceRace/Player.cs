@@ -10,7 +10,7 @@ namespace SpaceRace
     [Serializable]
     abstract public class Player
     {
-        public int MoveIndex = 15;
+        public int MoveIndex = 23;
         public Ball Ball { get; set; }
         public Point Center { set; get; }
         public int Points { get; set; }

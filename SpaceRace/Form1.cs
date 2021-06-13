@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace SpaceRace
 {
-    public partial class Form1 : Form
+    public partial class SpaceRace : Form
     {
         public Scene Scene { get; set; }
 
         int timeLeft;
-        public Form1()
+        public SpaceRace()
         {
             InitializeComponent();
             DoubleBuffered = true;
@@ -96,7 +96,7 @@ namespace SpaceRace
 
         private void timerGeneratingBalls_Tick(object sender, EventArgs e)
         {
-            timerGeneratingBalls.Interval = new Random().Next(120, 300);
+            timerGeneratingBalls.Interval = new Random().Next(150, 500);
             Scene.GenerateBall();
             Invalidate();
         }

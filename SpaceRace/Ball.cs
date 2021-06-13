@@ -35,7 +35,8 @@ namespace SpaceRace
         }
         public bool IsTouching(Ball that)
         {
-            double d = Math.Sqrt(Math.Pow(Center.X - that.Center.X, 2) + Math.Pow(Center.Y - that.Center.Y, 2));
+            double d = Math.Sqrt(Math.Pow(Center.X - that.Center.X, 2) +
+                Math.Pow(Center.Y - that.Center.Y, 2));
             return d <= Radius * 2;
         }
     }
